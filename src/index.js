@@ -1,10 +1,30 @@
 import express from 'express';
-import dotenv from 'dotenv';
-
-dotenv.config();
+import { PORT } from './constant';
+import Db from './db/config/connection';
+import bodyParser from 'body-parser';
+import router from './routes';
+import { respondWithWarning, respondWithSuccess } from './helpers/responseHandler';
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = PORT || 3000;
+app.use(bodyParser.json());
+app.use(
+  bodyParser.urlencoded({
+    extended: true
+  })
+);
+
+(async () => {
+    await Db.creatUsersTable();
+    await Db.creatUsersAttributeTable();
+   
+})().catch( err => console.log(err.stack))
+
+app.get('/', async (req, res) => respondWithSuccess(res, 200, 'welcome'));
+
+app.use(router);
+app.all('*', (req, res) => respondWithWarning(res, 404, 'route not found'));
+
 
 app.listen(port, () => {
     console.log(`server listening on port ${port}`);
