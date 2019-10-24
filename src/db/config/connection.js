@@ -26,6 +26,7 @@ class Db {
         first_name VARCHAR(120) NOT NULL,
         surname VARCHAR(120) NOT NULL,
         birth_date VARCHAR(120) NOT NULL,
+        attribute TEXt[],
         created_at TIMESTAMP
         )`;
 

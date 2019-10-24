@@ -1,8 +1,8 @@
 import express from 'express';
 import { PORT } from './constant';
-import Db from './db/config/connection';
 import bodyParser from 'body-parser';
 import router from './routes';
+import cors from 'cors';
 import { respondWithWarning, respondWithSuccess } from './helpers/responseHandler';
 
 const app = express();
@@ -14,11 +14,8 @@ app.use(
   })
 );
 
-(async () => {
-    await Db.creatUsersTable();
-    await Db.creatUsersAttributeTable();
-   
-})().catch( err => console.log(err.stack))
+
+app.use(cors());
 
 app.get('/', async (req, res) => respondWithSuccess(res, 200, 'welcome'));
 

@@ -20,6 +20,7 @@ class Model {
 
      fieldNames.forEach( ([ fieldName, fieldValue ] ) => {
          this.fieldString += `${fieldName},`;
+
          this.valueString += `$${this.count},`;
          this.values.push(fieldValue);
          this.count += 1;
@@ -27,6 +28,7 @@ class Model {
     
      this.fieldString = this.fieldString.trim().slice(0, -1);
      this.valueString = this.valueString.trim().slice(0, -1);
+    
      this.query =  `INSERT INTO ${this._table} (${this.fieldString}) VALUES (${this.valueString}) RETURNING *`;
      this.client = await pool;
      return this.client.query(`${this.query}`, this.values);

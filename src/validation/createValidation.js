@@ -3,6 +3,7 @@ import { joiValidator } from './joiValidator';
 import { respondWithWarning } from '../helpers/responseHandler';
 
 export const createUserValidation = async (req, res, next) => {
+    console.log(req.body)
     const schema = Joi.object().keys({
         first_name: Joi.string().required(),
         surname: Joi.string().required(),
