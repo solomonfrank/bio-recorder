@@ -1,7 +1,7 @@
 import { Pool } from 'pg';
-import { DATABASE_LOCAL_URL, DATABASE_PROD_URL} from '../../constant';
+import { DATABASE_LOCAL_URL, DATABASE_URL} from '../../constant';
 
-const connectionString = DATABASE_LOCAL_URL || DATABASE_PROD_URL;
+const connectionString = DATABASE_LOCAL_URL || DATABASE_URL;
 
 
 class Db {
