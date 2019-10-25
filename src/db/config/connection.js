@@ -1,12 +1,13 @@
 import { Pool } from 'pg';
 import { DATABASE_LOCAL_URL, DATABASE_URL} from '../../constant';
 
-const connectionString = DATABASE_LOCAL_URL || DATABASE_URL;
+const connectionString =  DATABASE_URL || DATABASE_LOCAL_URL;
+console.log(connectionString)
 
 
 class Db {
     constructor(){
-        this.conn = new Pool({ connectionString, ssl: true, });
+        this.conn = new Pool({ connectionString,ssl: true });
         console.log('database successfully connected')
         return this.conn;
     }
