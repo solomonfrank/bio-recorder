@@ -6,7 +6,7 @@ const connectionString = DATABASE_LOCAL_URL || DATABASE_URL;
 
 class Db {
     constructor(){
-        this.conn = new Pool({ connectionString });
+        this.conn = new Pool({ connectionString, ssl: true, });
         console.log('database successfully connected')
         return this.conn;
     }
