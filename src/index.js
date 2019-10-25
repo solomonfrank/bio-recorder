@@ -4,12 +4,7 @@ import bodyParser from 'body-parser';
 import router from './routes';
 import cors from 'cors';
 import { respondWithWarning, respondWithSuccess } from './helpers/responseHandler';
-import Db from './db/config/connection';
 
-( async () => {
-
-  await Db.creatUsersTable()
-} )()
 
 const app = express();
 const port = PORT || 3000;
