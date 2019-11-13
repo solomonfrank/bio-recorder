@@ -1,14 +1,14 @@
 import  Model from './index';
 
 class User extends Model {
-    constructor (modelType ='users') {
-        super(modelType);
+  constructor (modelType ='users') {
+    super(modelType);
 
-    }
+  }
     
-    static init (){
-        return new User();
-    }
+  static init (){
+    return new User();
+  }
     
 }
 
